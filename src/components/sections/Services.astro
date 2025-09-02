@@ -1,0 +1,42 @@
+---
+import Service from "../cards/Service.astro";
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import Title from "../shared/Title.astro";
+import { services } from "../../utils/data.ts";
+
+
+type ServicesProps = {
+    title: string;
+    description: string;
+    icon: string
+};
+
+
+---
+
+
+<section id="programs" class="py-16 lg:py-24">
+  <Container className="space-y-10 md:space-y-14">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <Title>
+        Transform Your Body & Mind Through Martial Arts
+      </Title>
+      <Paragraph>
+        At <strong>Tzur Combat Arts Academy</strong>, we go beyond training — we build fitness, self-defense, and discipline for <em>all ages and fitness levels</em>. 
+        Whether you’re a child, teen, or working professional, our programs are designed to help you grow stronger, sharper, and more confident.
+      </Paragraph>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {
+        services.map((service: ServicesProps) => (
+          <Service title={service.title} description={service.description} icon={service.icon} />
+        ))
+      }
+    </div>
+  </Container>
+</section>

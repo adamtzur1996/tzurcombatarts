@@ -1,0 +1,114 @@
+---
+import Button from "../shared/Button.astro";
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+---
+
+<section  id="cta" class="pb-20">
+  <Container>
+    <div
+      class="w-full relative py-8 md:py-10 px-6 md:px-8 rounded-2xl bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-gray-900 dark:to-transparent"
+    >
+      <div class="absolute right-0 top-0 h-full w-full flex justify-end -z-10">
+        <div class="w-28 h-28 overflow-auto flex rounded-xl relative blur-2xl">
+            <span
+              class="absolute w-16 h-16 -top-1 -right-1 bg-green-500 rounded-md rotate-45"
+            ></span>
+            <span
+              class="absolute w-16 h-16 -bottom-1 -right-1 bg-[#FCDC58] rounded-md rotate-45"
+            ></span>
+            <span
+              class="absolute w-16 h-16 -bottom-1 -left-1 bg-primary rounded-md rotate-45"
+            ></span>
+          </div>
+      </div>
+
+      <div class="absolute left-0 bottom-0 h-full w-full flex items-end -z-10">
+        <div class="w-28 h-28 overflow-auto flex rounded-xl relative blur-2xl">
+            <span
+              class="absolute w-16 h-16 -top-1 -right-1 bg-green-500 rounded-md rotate-45"
+            ></span>
+            <span
+              class="absolute w-16 h-16 -bottom-1 -right-1 bg-[#FCDC58] rounded-md rotate-45"
+            ></span>
+            <span
+              class="absolute w-16 h-16 -bottom-1 -left-1 bg-primary rounded-md rotate-45"
+            ></span>
+          </div>
+      </div>
+      <div class="mx-auto text-center max-w-xl md:max-w-2xl relative">
+        <h1
+          class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight
+          font-bold text-heading-1"
+        >
+          Quick Start your 
+          <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-35% via-primary via-30% to-green-600">
+            Martial Arts & Fitness Journey 
+          </span>
+          with <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-br from-green-600 from-35% via-secondary via-20%  to-indigo-600">
+            Tzur Combat Arts
+          </span> 
+        </h1>
+        <Paragraph className={"pt-10"}>
+          Book your first class today. Whether it’s fitness, martial arts, or self-defence — this is where transformation begins.
+        </Paragraph>
+
+        <!-- WhatsApp Button -->
+        <div class="mx-auto max-w-md sm:max-w-xl pt-8">
+          <a 
+            href="https://wa.me/918698459690" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <Button variant={"primary"}>
+              <span class="text-white relative z-[5]">
+                Chat on WhatsApp
+              </span>
+            </Button>
+          </a>
+        </div>
+      </div>
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+          <!-- Contact Form -->
+          <form 
+            action="https://formspree.io/f/xeolzkwq" 
+            method="POST"
+            class="bg-white/80 dark:bg-gray-800/60 p-6 rounded-xl shadow-lg text-left space-y-4"
+          >
+            <input 
+              type="text" 
+              name="name" 
+              placeholder="Your Name" 
+              required
+              class="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700"
+            />
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Your Email" 
+              required
+              class="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700"
+            />
+            <textarea 
+              name="message" 
+              rows="4" 
+              placeholder="Your Message"
+              class="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700"
+            ></textarea>
+            <button 
+              type="submit"
+              class="w-full bg-primary text-white py-3 rounded-md font-medium hover:bg-primary/90 transition"
+            >
+              Send Message
+            </button>
+          </form>
+  
+          <!-- Map -->
+          <div class="rounded-xl overflow-hidden shadow-lg w-full">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3842.1378694855025!2d73.83264849999999!3d15.637645099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfebfbd3cbf95d%3A0xd9e54859cd2d8a14!2sRNG%20Automotive!5e0!3m2!1sen!2sin!4v1756721556106!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"  title="Google Maps location of Tzur Combat Arts Academy in Colvale, Goa"></iframe>
+          </div>
+        </div>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,137 @@
+---
+const { items = [], single = true } = Astro.props;
+---
+<section
+  class="space-y-4"
+  data-accordion
+  data-single={single ? "true" : "false"}
+>
+  {items.map((item, i) => (
+    <div class="accordion-item border-b border-box-border" data-index={i}>
+      <h3>
+        <button
+          id={`accordion-trigger-${i}`}
+          class="accordion-trigger w-full flex items-center justify-between py-4 text-left text-heading-2 font-medium focus:outline-none"
+          aria-expanded="false"
+          aria-controls={`accordion-panel-${i}`}
+          type="button"
+        >
+          <span class="break-words">{item.question}</span>
+
+          <!-- plus icon: horizontal + vertical lines -->
+          <svg class="accordion-icon w-6 h-6 ml-4 text-heading-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden>
+            <path class="icon-h" stroke-linecap="round" stroke-linejoin="round" d="M4 12h16"></path>
+            <path class="icon-v" stroke-linecap="round" stroke-linejoin="round" d="M12 4v16"></path>
+          </svg>
+        </button>
+      </h3>
+
+      <div
+        id={`accordion-panel-${i}`}
+        class="accordion-panel overflow-hidden"
+        role="region"
+        aria-labelledby={`accordion-trigger-${i}`}
+        style="max-height:0; opacity:0;"
+      >
+        <div class="accordion-panel-inner py-3 text-heading-3">
+          {typeof item.answer === "string" ? <div set:html={item.answer}></div> : <div>{item.answer}</div>}
+        </div>
+      </div>
+    </div>
+  ))}
+</section>
+
+<style>
+/* small scoped CSS for transitions + icon behavior */
+[data-accordion] .accordion-icon { transition: transform .28s ease; }
+[data-accordion] .icon-v { transition: transform .28s ease, opacity .28s ease; transform-origin: center; }
+
+/* hide vertical line when open (plus -> minus effect) */
+[data-accordion] .accordion-trigger.open .icon-v { transform: scaleY(0.05); opacity: 0; }
+
+/* panel transitions */
+[data-accordion] .accordion-panel {
+  transition: max-height 420ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease;
+}
+
+/* ensure questions wrap to avoid overflow */
+[data-accordion] .accordion-trigger .break-words { word-break: break-word; }
+</style>
+
+<script type="module">
+/* Client-side behavior: runs in browser */
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.querySelector("[data-accordion]");
+  if (!root) return;
+
+  const single = root.getAttribute("data-single") === "true";
+  const triggers = Array.from(root.querySelectorAll(".accordion-trigger"));
+  const panels = Array.from(root.querySelectorAll(".accordion-panel"));
+  const ANIM_MS = 420;
+
+  // initialize ARIA & panel state
+  triggers.forEach((btn, i) => {
+    const panel = panels[i];
+    btn.setAttribute("aria-expanded", "false");
+    panel.setAttribute("aria-hidden", "true");
+    panel.style.maxHeight = "0";
+    panel.style.opacity = "0";
+
+    // click handler
+    btn.addEventListener("click", () => {
+      const isOpen = btn.classList.contains("open");
+      if (isOpen) {
+        closePanel(btn, panel);
+      } else {
+        if (single) {
+          triggers.forEach((b, j) => {
+            if (b !== btn) closePanel(b, panels[j]);
+          });
+        }
+        openPanel(btn, panel);
+      }
+    });
+
+    // keyboard support: Enter/Space toggle
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+
+  function openPanel(btn, panel) {
+    // set height to scrollHeight to animate
+    panel.style.maxHeight = panel.scrollHeight + "px";
+    panel.style.opacity = "1";
+    btn.classList.add("open");
+    btn.setAttribute("aria-expanded", "true");
+    panel.setAttribute("aria-hidden", "false");
+
+    // after animation, remove maxHeight so content can grow naturally
+    const onEnd = (ev) => {
+      if (ev.propertyName === "max-height" && btn.classList.contains("open")) {
+        panel.style.maxHeight = "none";
+      }
+      panel.removeEventListener("transitionend", onEnd);
+    };
+    panel.addEventListener("transitionend", onEnd);
+  }
+
+  function closePanel(btn, panel) {
+    // if maxHeight is 'none', set it to scrollHeight first so we can animate to 0
+    if (panel.style.maxHeight === "none" || panel.style.maxHeight === "") {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      // force repaint
+      void panel.offsetHeight;
+    }
+
+    panel.style.maxHeight = "0";
+    panel.style.opacity = "0";
+    btn.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+    panel.setAttribute("aria-hidden", "true");
+  }
+});
+</script>

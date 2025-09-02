@@ -1,0 +1,103 @@
+---
+import Container from "../shared/Container.astro";
+import Accordion from "./Accordion.astro";
+
+
+const faqData = [
+  {
+    question: "Is martial arts only for kids or advanced athletes?",
+    answer: `
+      <p>Not at all. Martial arts at Tzur Combat Arts Academy is for <strong>everyone</strong> — children (5+), teens, adults, and seniors.
+      Our classes are designed so beginners and experienced athletes both progress safely and enjoyably.</p>
+      <p><strong>Key benefits:</strong> improved fitness, better focus, confidence, and practical self-defense.</p>
+    `
+  },
+  {
+    question: "Do I need to be fit before joining?",
+    answer: `
+      <p>No. You can start exactly where you are. Our instructor will scale the training to your level and help you build fitness progressively.</p>
+      <ul>
+        <li>Beginner-friendly warmups and regressions</li>
+        <li>Progressive strength & conditioning</li>
+        <li>Individual attention in small classes</li>
+      </ul>
+    `
+  },
+  {
+    question: "What should I wear for class?",
+    answer: `
+      <p>Wear comfortable exercise clothes for your first sessions — t-shirt, shorts/track pants, and clean trainers or bare feet (depending on class).</p>
+      <p>If you enroll in Karate, you must wear the traditional <em>gi</em> (karate uniform); we can help arrange one.</p>
+      <p><strong>Etiquette:</strong> arrive clean, trimmed nails, remove jewelry, and show respect to the instructor and your peers.</p>
+    `
+  },
+  {
+    question: "What are the class timings and schedules?",
+    answer: `
+      <p>We offer a variety of class times across the weekdays to fit families and professionals — morning to evening slots are available.</p>
+      <p>Timetables change slightly with new batches. <strong>Please contact us</strong> (WhatsApp or email) and we’ll recommend the best batch for your goals.</p>
+      <p><a href="https://wa.me/918698459690" target="_blank">Chat with us on WhatsApp</a> for the most up-to-date schedule and a free consultation.</p>
+    `
+  },
+  {
+    question: "Are classes affordable?",
+    answer: `
+      <p>Yes — our pricing is designed to be <strong>extremely affordable</strong> compared with private trainers or commercial gyms.</p>
+      <p>We offer flexible plans and family discounts. For exact pricing and tailored plans, <strong>please contact us directly</strong> — no pressure, just honest options that match your goals.</p>
+    `
+  },
+  {
+    question: "Do you provide certifications and competition opportunities?",
+    answer: `
+      <p>Yes. Karate students receive recognized certifications (e.g., under YKKF, India). We also prepare students for local and national competitions when they choose to compete.</p>
+      <p>Competitive training is optional; our focus is first on safety and technical foundation.</p>
+    `
+  },
+  {
+    question: "What are your safety policies?",
+    answer: `
+      <div id="policies">
+      <p>Safety is our top priority. Our policies include:</p>
+      <ul>
+        <li>Structured warm-ups and cool-downs</li>
+        <li>Drills progressions to reduce injury risk</li>
+        <li>Mandatory protective gear for sparring when required</li>
+        <li>Respectful conduct and safe partner work enforced at all times</li>
+      </ul>
+      </div>
+    `
+  },
+  {
+    question: "How do you handle privacy and personal data?",
+    answer: `
+      <p>We only collect the information needed to communicate and manage memberships (name, phone, email, emergency contact).</p>
+      <p>We never sell or share personal data with third parties. Your details are used only for class admin, scheduling, and important updates.</p>
+    `
+  },
+  {
+    question: "What are the terms & conditions (enrollment, cancellations)?",
+    answer: `
+      <p>Short summary of our standard terms:</p>
+      <ul>
+        <li>Enrollment confirms acceptance of academy safety rules and code of conduct.</li>
+        <li>Consistent attendance is recommended to progress</li>
+      </ul>
+      <p>For a full copy of our Terms & Conditions, please request it via email at <a href="mailto:tzurcombatarts@gmail.com">tzurcombatarts@gmail.com</a>.</p>
+    `
+  },
+  {
+    question: "How do I book a trial or ask more questions?",
+    answer: `
+      <p>Easy — message us on WhatsApp: <a href="https://wa.me/918698459690" target="_blank">+91 86984 59690</a>, or send an email to <a href="mailto:tzurcombatarts@gmail.com">tzurcombatarts@gmail.com</a>. You can also contact us through Instagram at the following handle: <a href="https://www.instagram.com/tzurcombatarts/" target="_blank">@tzurcombatarts</a>.</p>
+      <p>We’ll reply with the best batch and next available free trial slot.</p>
+    `
+  }
+];
+---
+
+<Container className="font-sans">
+    <div class="max-w-5xl mx-auto px-6 py-12" id="faq">
+    <h1 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h1>
+    <Accordion items={faqData} single={true} />
+  </div>
+</Container>
