@@ -17,11 +17,25 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Tzur Combat Arts Academy Colvale Goa">
+    <!-- ✅ SEO Meta Tags -->
+    <title>Martial Arts & Fitness in Goa | Karate, MMA, Wushu & Boxing</title>
+    <meta name="description" content="Tzur Combat Arts Academy in Goa offers Karate, Wushu, MMA, Boxing & Fitness training for kids, adults & seniors. Strength, discipline & community.">
+    <meta name="keywords" content="Martial arts Goa, Karate Goa, Wushu Goa, MMA Goa, Boxing Goa, Kickboxing Goa, Fitness Goa, Martial arts India, Karate India, Wushu India, MMA India, Boxing India, Fitness India, Goa fitness academy, Goa martial arts training">
+
+    <!-- ✅ Open Graph / Facebook -->
+    <meta property="og:title" content="Martial Arts & Fitness in Goa | Karate, MMA, Wushu & Boxing">
+    <meta property="og:description" content="Tzur Combat Arts Academy in Goa offers Karate, Wushu, MMA, Boxing & Fitness training for kids, adults & seniors.">
+    <meta property="og:image" content="https://www.tzurcombatarts.com/_astro/HomeBg.DBxh8qWo_ZqMtaI.webp">
+    <meta property="og:url" content="https://www.tzurcombatarts.com/">
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Martial Arts & Fitness in Goa | Karate, MMA, Wushu & Boxing">
+    <meta name="twitter:description" content="Train Karate, Wushu, MMA, Boxing & Fitness at Tzur Combat Arts Academy in Goa. For kids, adults & seniors.">
+    <meta name="twitter:image" content="https://www.tzurcombatarts.com/_astro/HomeBg.DBxh8qWo_ZqMtaI.webp">
+
     <title>{title}</title>
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -111,6 +125,64 @@ const { title } = Astro.props;
       });
     }
   </script>
+  <!-- ✅ Local Business Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Tzur Combat Arts Academy",
+  "image": "https://www.tzurcombatarts.com/_astro/HomeBg.DBxh8qWo_ZqMtaI.webp",
+  "@id": "https://www.tzurcombatarts.com",
+  "url": "https://www.tzurcombatarts.com",
+  "telephone": "+91-8698459690",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Colvale, Near Highway",
+    "addressLocality": "Goa",
+    "addressCountry": "IN"
+  },
+  "openingHours": "Mo,Tu,We,Th,Fr 06:00-20:00",
+  "priceRange": "₹₹",
+  "sameAs": [
+    "https://www.instagram.com/tzurcombatarts"
+  ]
+}
+</script>
+
+<!-- ✅ FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you offer martial arts training for beginners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We train beginners of all ages in Karate, Wushu, MMA, and fitness. No prior experience is required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you train kids?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we train children starting from age 5 in Karate, Wushu and fitness with age-appropriate drills."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer training for people above 50?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we have specialized martial arts and fitness programs for seniors 50+ to improve mobility, strength, and health."
+      }
+    }
+  ]
+}
+</script>
+
 </html>
 <style is:global>
   :root {
