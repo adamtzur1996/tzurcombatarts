@@ -1,0 +1,54 @@
+---
+---
+
+<div
+  id="consent-box"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="consent-title"
+  class="fixed bottom-4 right-4 bg-white shadow-lg rounded-2xl p-4 w-72 text-sm z-50 hidden"
+>
+  <p id="consent-title" class="mb-3 text-gray-700 font-medium">
+    We use analytics to improve your experience. Allow tracking?
+  </p>
+  <div class="flex gap-2">
+    <button
+      id="allow-tracking"
+      class="px-3 py-1 rounded-lg bg-green-600 text-white hover:bg-green-700"
+    >
+      Yes, allow
+    </button>
+    <button
+      id="deny-tracking"
+      class="px-3 py-1 rounded-lg bg-gray-300 text-black hover:bg-gray-400"
+    >
+      No, thanks
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const box = document.getElementById("consent-box");
+    if (!box) return;
+
+    const allowBtn = document.getElementById("allow-tracking");
+    const denyBtn = document.getElementById("deny-tracking");
+
+    const stored = localStorage.getItem("analyticsConsent");
+    if (!stored) {
+      box.classList.remove("hidden");
+    }
+
+    allowBtn?.addEventListener("click", () => {
+      localStorage.setItem("analyticsConsent", "granted");
+      box.classList.add("hidden");
+      // Optional: window.location.reload();
+    });
+
+    denyBtn?.addEventListener("click", () => {
+      localStorage.setItem("analyticsConsent", "denied");
+      box.classList.add("hidden");
+    });
+  });
+</script>
